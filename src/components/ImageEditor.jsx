@@ -37,14 +37,7 @@ const ImageEditor = ({ imageUrl }) => {
         selectable: true,
       });
 
-      canvas.add(fabricImg);
-      /** Show text and shapes behind the image */
-      //  fabricImg.sendToBack();
-      //  canvas.setActiveObject(fabricImg);
-
-      /** Show text and shapes on top of the image */
-      fabricCanvas.current.sendToBack(fabricImg);
-
+      canvas.add(fabricImg); // Add image only once
       canvas.renderAll();
       setImage(fabricImg);
     };
@@ -64,7 +57,7 @@ const ImageEditor = ({ imageUrl }) => {
       fill: selectedColor,
     });
     fabricCanvas.current.add(newText);
-    newText.bringToFront();
+    newText.bringToFront(); // Bring text on top of image
     setText(newText);
   };
 
@@ -106,7 +99,7 @@ const ImageEditor = ({ imageUrl }) => {
     }
 
     fabricCanvas.current.add(shapeObj);
-    shapeObj.bringToFront();
+    shapeObj.bringToFront(); // Bring shape on top of image and text
   };
 
   const saveImage = () => {
@@ -146,9 +139,9 @@ const ImageEditor = ({ imageUrl }) => {
             Shape Color:
             <input type="color" value={shapeColor} onChange={(e) => setShapeColor(e.target.value)} />
           </label>
+
           {/* Save Button moved here */}
           <button onClick={saveImage} className="save-btn">Save</button>
-
         </div>
 
         <div style={{ border: '2px solid #ccc', height: '600px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
