@@ -38,8 +38,13 @@ const ImageEditor = ({ imageUrl }) => {
       });
 
       canvas.add(fabricImg);
-      fabricImg.sendToBack();
-      canvas.setActiveObject(fabricImg);
+      /** Show text and shapes behind the image */
+      //  fabricImg.sendToBack();
+      //  canvas.setActiveObject(fabricImg);
+
+      /** Show text and shapes on top of the image */
+      fabricCanvas.current.sendToBack(fabricImg);
+
       canvas.renderAll();
       setImage(fabricImg);
     };
