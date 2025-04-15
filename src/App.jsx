@@ -3,14 +3,14 @@ import Search from './components/Search';
 import ImageGallery from './components/ImageGallery';
 import ImageEditor from './components/ImageEditor';
 
-import './app.css'
+import './App.css';
 
 const App = () => {
   const [query, setQuery] = useState('');
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [selectedImage, setSelectedImage] = useState(null); // ⭐ for canvas
+  const [selectedImage, setSelectedImage] = useState(null);
 
   const access_key = "ARxW-tTkdgmlFZJA6zyhXASbPun_KZv0N2_mKkwv6x0";
 
