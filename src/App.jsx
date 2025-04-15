@@ -59,9 +59,24 @@ const App = () => {
   useEffect(() => {
     fetchImages()
   }, [])
+
+  useEffect(() => {
+    if (query.trim() === '') {
+      setImages([]);
+      setError(null);
+    }
+  }, [query]);
+
+  const clearAll = () => {
+    setQuery('');
+    setImages([]);
+    setError(null);
+    setSelectedImage(null);
+  };
+
   return (
     <main className="app-wrapper">
-      <Search fetchImages={fetchImages} setQuery={setQuery} query={query} />
+      <Search fetchImages={fetchImages} setQuery={setQuery} query={query} clearAll={clearAll}/>
 
       {loading && (
         <div className="loader-container">
@@ -73,13 +88,30 @@ const App = () => {
       {error && <p className="error">{error}</p>}
 
       {/* If image is selected, show ImageEditor, otherwise show gallery */}
-      {
+      {/* {
         selectedImage ? (
           <ImageEditor imageUrl={selectedImage} />
         ) : (
           <ImageGallery images={images} onSelectImage={setSelectedImage} />
         )
+      } */}
+      {
+        selectedImage ? (
+          <ImageEditor imageUrl={selectedImage} />
+        ) : (
+          <>
+            {query.trim() === '' ? (
+              <p className="no-query-message">
+
+                Please enter a search term to find images.
+              </p>
+            ) : (
+              <ImageGallery images={images} onSelectImage={setSelectedImage} />
+            )}
+          </>
+        )
       }
+
 
 
 
