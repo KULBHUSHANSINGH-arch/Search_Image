@@ -121,8 +121,8 @@ const ImageEditor = ({ imageUrl }) => {
   return (
     <div style={{ display: 'flex', padding: '20px', gap: '20px' }}>
       {/* Left Panel */}
-      <div style={{ flex: 3, border: '2px solid green', padding: '10px' }}>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginBottom: '10px', border: '2px solid green', padding: '10px' }}>
+      <div style={{ flex: 3, padding: '10px' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginBottom: '10px', border: '2px solid #ccc', padding: '10px' }}>
           <button onClick={addText}>Add Text</button>
           <button onClick={() => addShape('rectangle')}>Rectangle</button>
           <button onClick={() => addShape('circle')}>Circle</button>
@@ -141,30 +141,36 @@ const ImageEditor = ({ imageUrl }) => {
             Shape Color:
             <input type="color" value={shapeColor} onChange={(e) => setShapeColor(e.target.value)} />
           </label>
+          {/* Save Button moved here */}
+          <button onClick={saveImage} className="save-btn">Save</button>
 
         </div>
 
-        <div style={{ border: '2px solid green', height: '600px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ border: '2px solid #ccc', height: '600px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <canvas ref={canvasRef} />
         </div>
       </div>
 
       {/* Right Panel */}
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-        <div style={{ border: '2px solid green', padding: '10px', marginBottom: '20px' }}>
-          <button style={{ width: '100%', padding: '10px', border: '2px solid red' }}>Add Options</button>
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', gap: '20px' }}>
+        {/* See Caption */}
+        <div style={{ padding: '10px' }}>
+          <button style={{ width: '100%', padding: '10px' }}>See Caption </button>
+
+          {/* Image Preview */}
           <div style={{ textAlign: 'center', marginTop: '10px' }}>
             {previewUrl ? (
-              <img src={previewUrl} alt="Preview" style={{ maxWidth: '100%' }} />
+              <>
+                <div className="preview-image-wrapper">
+                  <img src={previewUrl} alt="Preview" className="preview-image" />
+                </div>
+                {/* Download Button  */}
+                <button onClick={downloadPreviewImage} className="download-btn">Download</button>
+              </>
             ) : (
-              <p>img</p>
+              <div className="preview-image-wrapper">Save the image first to see it here for downloading. </div>
             )}
           </div>
-        </div>
-
-        <div style={{ border: '2px solid green', padding: '10px' }}>
-          <button onClick={saveImage} style={{ width: '100%', marginBottom: '10px' }}>Save</button>
-          <button onClick={downloadPreviewImage} style={{ width: '100%' }}>Download</button>
         </div>
       </div>
     </div>

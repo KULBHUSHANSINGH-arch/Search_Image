@@ -10,8 +10,6 @@ const Search = ({ query, setQuery, fetchImages, clearAll }) => {
     setQuery(e.target.value);
   };
 
- 
-
   return (
     <div className="search-container">
       <section className="user-info">

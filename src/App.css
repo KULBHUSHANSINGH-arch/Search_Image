@@ -19,7 +19,7 @@ body {
 /* Search Section Style */
 .search-container {
   display: flex;
-  flex-direction: column; /* Added to stack user-info & form vertically */
+  flex-direction: column; 
   align-items: center;
   padding: 2rem;
   background-color: #ffffff;
@@ -44,6 +44,7 @@ body {
   font-size: 1rem;
   margin-bottom: 5px;
 }
+
 /* Search CSS */
 .search-container {
   display: flex;

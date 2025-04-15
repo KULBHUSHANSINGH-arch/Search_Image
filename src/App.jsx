@@ -14,7 +14,7 @@ const App = () => {
 
   const access_key = "ARxW-tTkdgmlFZJA6zyhXASbPun_KZv0N2_mKkwv6x0";
 
-  // Debounce function (simple version)
+  /**Debounce function (simple version) **/ 
   const debounce = (func, delay) => {
     let timeoutId;
     return (...args) => {
@@ -54,8 +54,7 @@ const App = () => {
     }
   };
 
-  // Debounced search handler
-
+  /**   Debounced search handler  */
   useEffect(() => {
     fetchImages()
   }, [])
@@ -88,13 +87,6 @@ const App = () => {
       {error && <p className="error">{error}</p>}
 
       {/* If image is selected, show ImageEditor, otherwise show gallery */}
-      {/* {
-        selectedImage ? (
-          <ImageEditor imageUrl={selectedImage} />
-        ) : (
-          <ImageGallery images={images} onSelectImage={setSelectedImage} />
-        )
-      } */}
       {
         selectedImage ? (
           <ImageEditor imageUrl={selectedImage} />
@@ -111,9 +103,6 @@ const App = () => {
           </>
         )
       }
-
-
-
 
     </main>
   );
